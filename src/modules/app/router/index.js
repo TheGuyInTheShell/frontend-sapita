@@ -10,6 +10,11 @@ const AppRoutes = [
             path: '',
             name: 'app-home',
             component: ()=> import('../layout/PrincipalLayout.vue'),
+           },
+           {
+            path: 'record',
+            name: 'app-record',
+            component: ()=> import('../layout/RecordLayout.vue'),
            }
         ],
         beforeEnter: (to, from) => {
