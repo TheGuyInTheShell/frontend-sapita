@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@tanstack/vue-query": "^4.29.5",
+    "chart.js": "^4.3.0",
     "daisyui": "^2.51.6",
     "flowbite": "^1.6.5",
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
+    "vue-chartjs": "^5.2.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

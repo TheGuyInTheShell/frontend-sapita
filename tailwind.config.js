@@ -13,7 +13,11 @@ export default {
     'alert-error',
   ],
   theme: {
-    extend: {},
+    extend: {
+      translate: {
+        '20p': '20%',
+      },
+    },
   },
   plugins: [
     require('flowbite/plugin'),

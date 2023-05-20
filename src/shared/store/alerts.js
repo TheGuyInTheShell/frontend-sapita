@@ -5,7 +5,7 @@ export const useAlertStore = defineStore('alerts', () => {
   const alertConfig = reactive({
     show: false,
     message: '',
-    type: ''
+    type: 'error'
   })
 
   const getAlertConfig = computed(() => alertConfig)

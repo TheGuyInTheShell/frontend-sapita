@@ -10,6 +10,12 @@ const { getAlertConfig, alertConfig } = store
 </script>
 
 <template>
-  <RouterView class="z-10 absolute" />
+  <RouterView class="absolute" />
   <AlertNotification v-show="getAlertConfig.show" :alert-config="getAlertConfig" />
 </template>
+
+<style>
+  .z-29{
+    z-index: 29;
+  }
+</style>

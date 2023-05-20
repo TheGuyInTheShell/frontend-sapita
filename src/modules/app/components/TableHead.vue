@@ -1,6 +1,6 @@
 <template>
     <tr>
-        <th>Estado</th>
+        <th >Estado</th>
         <th>Nombre</th>
         <th>Trabajador</th>
         <th>Asignado en</th>

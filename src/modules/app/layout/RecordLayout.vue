@@ -30,6 +30,71 @@ const tableRows = ref([
           detalles: 'policia municipal - administracion'
         },
     },
+    {
+        id: '',
+        estado: '',
+        nombre: 'Matar a maduro',
+        trabajador: 'Omarleen Perez',
+        asignado: new Date().toISOString(),
+        iniciado: new Date().toISOString(),
+        finalizado: '',
+        sitio: {
+          desarrollo: 'externo',
+          detalles: 'policia municipal - administracion'
+        },
+    },
+    {
+        id: '',
+        estado: '',
+        nombre: 'Matar a maduro',
+        trabajador: 'Omarleen Perez',
+        asignado: new Date().toISOString(),
+        iniciado: new Date().toISOString(),
+        finalizado: '',
+        sitio: {
+          desarrollo: 'externo',
+          detalles: 'policia municipal - administracion'
+        },
+    },
+    {
+        id: '',
+        estado: '',
+        nombre: 'Matar a maduro',
+        trabajador: 'Omarleen Perez',
+        asignado: new Date().toISOString(),
+        iniciado: new Date().toISOString(),
+        finalizado: '',
+        sitio: {
+          desarrollo: 'externo',
+          detalles: 'policia municipal - administracion'
+        },
+    },
+    {
+        id: '',
+        estado: '',
+        nombre: 'Matar a maduro',
+        trabajador: 'Omarleen Perez',
+        asignado: new Date().toISOString(),
+        iniciado: new Date().toISOString(),
+        finalizado: '',
+        sitio: {
+          desarrollo: 'externo',
+          detalles: 'policia municipal - administracion'
+        },
+    },
+    {
+        id: '',
+        estado: '',
+        nombre: 'Matar a maduro',
+        trabajador: 'Omarleen Perez',
+        asignado: new Date().toISOString(),
+        iniciado: new Date().toISOString(),
+        finalizado: '',
+        sitio: {
+          desarrollo: 'externo',
+          detalles: 'policia municipal - administracion'
+        },
+    },
 
 ])
 
@@ -38,9 +103,15 @@ const tableRows = ref([
 
 <template>
    
-   <AddRecordModal />
+   <div class="add fixed flex justify-start items-end z-13">
+ 
+      <AddRecordModal />
 
-  <section class="overflow-x-auto h-full">
+   </div>
+
+ <div class="pb-24">
+
+  <section class="overflow-x-auto table-container">
   <table class="table w-full">
     <!-- head -->
     <thead>
@@ -48,7 +119,7 @@ const tableRows = ref([
     </thead>
     <tbody>
       <!-- row 1 -->
-      <tr v-for="row in tableRows" :key="row.nombre">
+      <tr class="row" v-for="row in tableRows" :key="row.nombre">
         <th>
           <label>
             <input type="checkbox" class="checkbox" />
@@ -74,6 +145,7 @@ const tableRows = ref([
           </div>
         </td>
       </tr>
+      
     </tbody>
     <!-- foot -->
     <tfoot>
@@ -82,4 +154,26 @@ const tableRows = ref([
     
   </table>
 </section>
+
+ </div>
+
+  
+   
 </template>
+
+
+<style scoped>
+  .add{
+    width: 50%;
+    height: 85%;
+  }
+  .table-container{
+    height: 10%;
+  }
+</style>
+
+<style>
+   .z-13{
+      z-index: 13;
+   }
+</style>

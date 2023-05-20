@@ -11,8 +11,8 @@
 
 <template>
     
-    <section class="h-screen flex items-end justify-center p-4">
-        <div :class="`alert alert-${props.alertConfig.type} shadow-lg fixed z-20 w-96`">
+    <section class="h-screen flex items-end justify-end p-4 z-50">
+        <div :class="`alert alert-${props.alertConfig.type} shadow-lg fixed w-80`">
         <div>
             <span>{{ props.alertConfig.message }}</span>
         </div>

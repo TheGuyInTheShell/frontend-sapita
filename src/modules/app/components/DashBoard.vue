@@ -1,46 +1,40 @@
 <script setup>
-import {ref} from 'vue'
+import {ref, defineAsyncComponent} from 'vue'
+const CustomLink = defineAsyncComponent(()=> import('./CustomLink.vue'))
+
 const seccionesNavegables = ref([
    {
-      titulo: 'Dashboard',
-      icono: '',
+      titulo: 'Record',
+      icono: 'history',
       link: {
-         nombre: '',
-         ruta: '#'
+         nombre: 'app-record',
+         ruta: '/app/record'
       }
    },
    {
-      titulo: 'Kanban',
-      icono: '',
+      titulo: 'Estadisticas',
+      icono: 'chart-infographic',
       link: {
-         nombre: '',
-         ruta: '#'
+         nombre: 'estadisticas-mensuales',
+         ruta: '/estadisticas'
       }
    },
    {
-      titulo: 'Inbox',
-      icono: '',
+      titulo: 'Inventario',
+      icono: 'list-check',
       link: {
-         nombre: '',
-         ruta: '#'
+         nombre: 'app-inventario',
+         ruta: '/inventario'
       }
    },
    {
-      titulo: 'Users',
-      icono: '',
+      titulo: 'Trabajadores',
+      icono: 'users',
       link: {
-         nombre: '',
-         ruta: '#'
+         nombre: 'app-trabajadores',
+         ruta: '/trabajadores'
       }
    },
-   {
-      titulo: 'Users',
-      icono: '',
-      link: {
-         nombre: '',
-         ruta: '#'
-      }
-   }
 
 ])
 
@@ -49,14 +43,16 @@ const seccionesNavegables = ref([
 
 <template>
     
-    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+   <aside id="logoSidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-slate-500 dark:bg-gray-800">
       <ul class="space-y-2 font-medium">
          <li :key="seccion" v-for="seccion in seccionesNavegables">
-            <a :href="seccion.link.ruta" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-               <img :src="seccion.icono" alt="icon">
-               <span class="ml-3">{{ seccion.titulo }}</span>
-            </a>
+            <RouterLink
+               :custom="true" 
+               :to="{ name: seccion.nombre}"
+               >
+               <CustomLink :seccion="seccion"></CustomLink>
+            </RouterLink>
          </li>
       </ul>
    </div>
