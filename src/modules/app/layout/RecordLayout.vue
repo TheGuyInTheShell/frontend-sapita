@@ -103,7 +103,7 @@ const tableRows = ref([
 
 <template>
    
-   <div class="add fixed flex justify-start items-end z-13">
+   <div class="float-layout-w float-layout-h fixed flex items-end justify-end pr-4 z-13">
  
       <AddRecordModal />
 

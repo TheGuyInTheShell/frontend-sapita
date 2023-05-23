@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.float-layout-h{
+    height: calc(100vh - 8rem);
+}
+
+.float-layout-w{
+    width: calc(100vw - 3vw);
+}
+
+@media (min-width: 648px){
+    .float-layout-w{
+        width: calc(100vw - 17rem);
+    }
+}

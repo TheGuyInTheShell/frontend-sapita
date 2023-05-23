@@ -1,5 +1,5 @@
 import EstadisticasSubRoutes from './estadisticas/index'
-
+import InventarioSubRoutes from './inventario/index'
 const AppRoutes = [
     {
         path: '/app',
@@ -25,6 +25,8 @@ const AppRoutes = [
            {
             path: 'inventario',
             name: 'app-inventario',
+            component: ()=> import('../layout/InventarioLayout.vue'),
+            children: InventarioSubRoutes, 
            },
            {
             path: 'trabajadores',
