@@ -2,16 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --sizeVariable: 2rem;
+}
+
+.margin-float{
+    margin-top: var(--sizeVariable);
+}
+
 .float-layout-h{
     height: calc(100vh - 8rem);
 }
 
 .float-layout-w{
-    width: calc(100vw - 3vw);
+    width: calc(100vw - 4vw);
 }
 
 @media (min-width: 648px){
     .float-layout-w{
         width: calc(100vw - 17rem);
+        max-width: calc(100vw - 17rem);
     }
 }
