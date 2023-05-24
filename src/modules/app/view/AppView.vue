@@ -25,7 +25,7 @@ onMounted(() => {
         <div class="w-full">
             <NavBar />
             <DashBoard />
-            <main class="p-2 sm:ml-64 bg-slate-800">
+            <main class="pl-2 sm:p-2 sm:ml-64 bg-slate-800">
                 <RouterView />
             </main>
         </div>

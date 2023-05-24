@@ -17,6 +17,8 @@ const props = defineProps({
 
 const floatNavContent = ref(null)
 
+const searchInput = ref(null)
+
 const resizeObserver = new ResizeObserver(()=>{
   document.documentElement.style.setProperty('--sizeVariable', `${floatNavContent.value?.offsetHeight + 30}px`);
 
@@ -26,6 +28,18 @@ onMounted(()=>{
     resizeObserver.observe(floatNavContent.value)  
 })
 
+
+let lastKeyPressTime = 0
+
+const handleKeyPressFetch = (ev)=> {
+  lastKeyPressTime = ev.timeStamp
+  setTimeout(()=>{
+    if (performance.now() - lastKeyPressTime > 600) {
+      console.log(lastKeyPressTime, performance.now())
+    }
+  }, 600)
+}
+
 </script>
 
 <template>
@@ -33,7 +47,7 @@ onMounted(()=>{
     <div ref="floatNavContent" class="float-layout-w fixed flex flex-wrap place-items-center bg-gray-500 p-2 gap-4 sm:-translate-x-2 z-10">
       
       <section v-if="props.busqueda" class="w-full">
-        <input type="text" placeholder="Busqueda" class="input input-bordered input-info w-full" />
+        <input v-model="searchInput" @keyup="handleKeyPressFetch" type="text" placeholder="Busqueda" class="input input-bordered input-info w-full" />
       </section>
 
       <section class="flex flex-wrap">

@@ -130,8 +130,8 @@ const itemsInventario = [
 
 <template>
 
-        <div v-for="item in itemsInventario" :key="item.nombre">
-                <ItemInventario  :nombre="item.nombre" :tipo="item.tipo" :descripcion="item.descripcion" />
+        <div v-for="(item, index) in itemsInventario" :key="item.nombre">
+                <ItemInventario :index="index"  :nombre="item.nombre" :tipo="item.tipo" :descripcion="item.descripcion" />
         </div>
 
 </template>
