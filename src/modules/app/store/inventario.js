@@ -14,13 +14,13 @@ export const useInventarioStore = defineStore('session', () => {
         console.log(paginationSelected.value)
     }
 
-    function setInventario(data = []) {
+    function loadData(data = []) {
         inventarioInScreen.value = data
     }
     
     return {
         getInventario,
-        setInventario,
+        loadData,
         getPagination,
         setPagination
     }

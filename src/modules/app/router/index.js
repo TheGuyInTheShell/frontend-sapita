@@ -1,5 +1,7 @@
 import EstadisticasSubRoutes from './estadisticas/index'
 import InventarioSubRoutes from './inventario/index'
+import RecordSubRoutes from './record/index'
+
 const AppRoutes = [
     {
         path: '/app',
@@ -15,6 +17,7 @@ const AppRoutes = [
             path: 'record',
             name: 'app-record',
             component: ()=> import('../layout/RecordLayout.vue'),
+            children: RecordSubRoutes,
            },
            {
             path: 'estadisticas',

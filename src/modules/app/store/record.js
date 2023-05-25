@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useRecordStore = defineStore('session', () => {
+export const useRecordStore = defineStore('record', () => {
     const recordInScreen = ref([])
 
     const getRecord = computed(() => recordInScreen.value)
@@ -14,13 +14,13 @@ export const useRecordStore = defineStore('session', () => {
         paginationSelected.value = value
     }
 
-    function loadRecord(data = []) {
+    function loadData(data = []) {
         recordInScreen.value = data
     }
     
     return {
         getRecord,
-        loadRecord,
+        loadData,
         pagination,
         setPagination,
     }
