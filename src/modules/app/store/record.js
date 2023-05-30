@@ -6,12 +6,30 @@ export const useRecordStore = defineStore('record', () => {
 
     const getRecord = computed(() => recordInScreen.value)
 
-    const paginationSelected = ref(1)
+    const query = ref('')
     
-    const pagination = computed(() => paginationSelected.value)
+    const urlEncode = new URLSearchParams()
+
+    const getQuery = computed(() => query.value)
+
+    function setQuery(arrayParameter) {
+        arrayParameter.forEach(el => {
+            urlEncode.append(el.key, el.value)
+        })
+        urlEncode.append('pag', paginationSelected.value)
+        query.value = urlEncode.toString()
+    }
+
+    const paginationSelected = ref(0)
+    
+    const getPagination = computed(() => paginationSelected.value)
 
     function setPagination(value) {
-        paginationSelected.value = value
+        if (value >= 0) {
+            paginationSelected.value = value
+            urlEncode.append('pag', value)
+            query.value = urlEncode.toString()
+        }
     }
 
     function loadData(data = []) {
@@ -20,8 +38,10 @@ export const useRecordStore = defineStore('record', () => {
     
     return {
         getRecord,
+        getQuery,
+        setQuery,
         loadData,
-        pagination,
+        getPagination,
         setPagination,
     }
 

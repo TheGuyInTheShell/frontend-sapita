@@ -7,7 +7,7 @@ const rutasNavegables = ref([
       titulo: 'Record',
       icono: 'history',
       link: {
-         nombre: 'app-record',
+         nombre: 'record-reciente',
          ruta: '/app/record'
       }
    },

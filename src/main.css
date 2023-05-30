@@ -29,12 +29,12 @@
 }
 
 .float-layout-w{
-    width: calc(100vw - 4vw);
+    width: 98vw;
 }
 
 @media (min-width: 648px){
     .float-layout-w{
-        width: calc(100vw - 17rem);
-        max-width: calc(100vw - 17rem);
+        width: calc(100vw - 16rem);
+        max-width: calc(100vw - 16rem);
     }
 }

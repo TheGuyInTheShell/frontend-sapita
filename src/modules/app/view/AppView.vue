@@ -4,7 +4,10 @@ import { onMounted } from 'vue'
 import { initDrawers, initCollapses } from 'flowbite'
 import NavBar from '../components/NavBar.vue'
 import DashBoard from '../components/DashBoard.vue'
+import { useSessionStore } from '../../login/store/session'
 // initialize components based on data attribute selectors
+
+const store = useSessionStore()
 onMounted(() => {
    // initAccordions();
    // initCarousels();
@@ -16,6 +19,7 @@ onMounted(() => {
    //  initPopovers();
    //  initTabs();
    //  initTooltips();
+   store.initSession()
 })
 
 </script>

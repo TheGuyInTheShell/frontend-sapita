@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from 'vue'
-import FloatNav from '../components/FloatNav.vue';
+import {ref, defineAsyncComponent} from 'vue'
+const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'));
 const subRutasNavegables = ref([
    {
       titulo: 'Total',

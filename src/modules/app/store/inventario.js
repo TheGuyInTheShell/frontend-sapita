@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useInventarioStore = defineStore('session', () => {
+export const useInventarioStore = defineStore('inventario', () => {
     const inventarioInScreen = ref([])
     const getInventario = computed(() => inventarioInScreen.value)
 

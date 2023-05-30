@@ -4,7 +4,7 @@ import PaginationFooter from '../components/PaginationFooter.vue';
 import { ref } from 'vue'
 import { useInventarioStore } from '../store/inventario';
 
-const store = useInventarioStore()
+const storeInventario = useInventarioStore()
 
 
 const subRutasNavegables = ref([
@@ -72,5 +72,5 @@ const subRutasNavegables = ref([
   <section class="margin-float flex flex-col gap-6">
     <RouterView />
   </section>
-  <PaginationFooter :storeContext="store" />
+  <PaginationFooter :store="storeInventario" />
 </template>

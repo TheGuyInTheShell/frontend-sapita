@@ -23,14 +23,6 @@ const dateNow = new Date().toLocaleDateString()
             <h1>Elieser Alvarado</h1>
             <h2 class="text-sm text-gray-500 dark:text-gray-400">{{ dateNow }}</h2>
         </div>
-            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 translate-y-24 -translate-x-20p list-none">
-                <li>
-                    <a>Perfil</a>
-                </li>
-                <li>
-                    <a>Cerrar session</a>
-                </li>
-            </ul>
         </div>
 
     </header>

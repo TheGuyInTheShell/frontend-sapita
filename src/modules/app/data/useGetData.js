@@ -1,21 +1,21 @@
 import {apiBase} from "../api/useApi"
 import { useQuery } from "@tanstack/vue-query"
 import { isAxiosError } from "axios"
-import { ref } from "vue"
+import { computed, ref } from "vue"
 
-function useGetData({store, subRoute, parameter}){
+function useGetData({store, subRoute}){
     const isLoading = ref(true)
     const isError = ref(false)
-
-    const route = parameter ? `${subRoute}/${parameter}` : subRoute 
-
+    const query = computed(()=> store.getQuery)
+    
     const getData = async()=>{
+        const route = query.value ? `${subRoute}?${query.value}` : subRoute 
         const res = await apiBase.get(route)
         return res
     }
     
     useQuery(
-        ['characters'],
+        [store.$id, query],
         getData,
         {
             onSuccess( res ) {
@@ -32,11 +32,12 @@ function useGetData({store, subRoute, parameter}){
                 isError.value = true
                 isLoading.value= false
             }
-        }
-        // {
-        //     cacheTime: 1000 * 60 * 5,
-        //     refetchOnReconnect: 'always',
-        // }
+        },
+        {
+            cacheTime: 1000 * 60 * 3,
+            refetchOnReconnect: 'always',
+            enabled: query
+        },
     )
     return {
         isLoading,
