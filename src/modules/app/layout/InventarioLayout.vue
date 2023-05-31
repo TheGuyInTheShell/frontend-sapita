@@ -3,7 +3,7 @@ import { ref, defineAsyncComponent } from 'vue'
 import { useInventarioStore } from '../store/inventario';
 
 const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
-const ContentFloatOptions = defineAsyncComponent(()=>import('../components/ContentFloatOptions.vue'))
+const QueryOptions = defineAsyncComponent(()=>import('../components/contentFloat/QueryOptions.vue'))
 const PaginationFooter = defineAsyncComponent(()=>import('../components/PaginationFooter.vue'))
 
 const storeInventario = useInventarioStore()
@@ -30,7 +30,7 @@ const selectionsInventario = ref([
 
 <template>
    <FloatNav>
-      <ContentFloatOptions :store="storeInventario" :selections="selectionsInventario" :busqueda="true" />
+      <QueryOptions :store="storeInventario" :selections="selectionsInventario" :busqueda="true" />
   </FloatNav>
   <section class="margin-float flex flex-col gap-6">
     <RouterView />

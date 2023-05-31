@@ -2,7 +2,7 @@
 import { ref, defineAsyncComponent, provide } from 'vue';
 import { useRecordStore } from '../store/record';
 
-const ContentFloatOptions = defineAsyncComponent(()=>import('../components/ContentFloatOptions.vue'))
+const QueryOptions = defineAsyncComponent(()=>import('../components/contentFloat/QueryOptions.vue'))
 const AddModal = defineAsyncComponent(()=>import('../components/AddModal.vue'))
 const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
 const PaginationFooter = defineAsyncComponent(()=>import('../components/PaginationFooter.vue'));
@@ -60,7 +60,7 @@ const selectionsRecord = ref([
    </section>
 
   <FloatNav>
-      <ContentFloatOptions :store="storeRecord" :selections="selectionsRecord" :busqueda="true" />
+      <QueryOptions store="storeRecord" :selections="selectionsRecord" :busqueda="true" />
   </FloatNav>
 
   <section class="margin-float pb-28">
