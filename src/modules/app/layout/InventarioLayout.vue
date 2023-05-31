@@ -1,8 +1,10 @@
 <script setup>
-import FloatNav from '../components/FloatNav.vue'
-import PaginationFooter from '../components/PaginationFooter.vue';
-import { ref } from 'vue'
+import { ref, defineAsyncComponent } from 'vue'
 import { useInventarioStore } from '../store/inventario';
+
+const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
+const ContentFloatOptions = defineAsyncComponent(()=>import('../components/ContentFloatOptions.vue'))
+const PaginationFooter = defineAsyncComponent(()=>import('../components/PaginationFooter.vue'))
 
 const storeInventario = useInventarioStore()
 
@@ -27,7 +29,9 @@ const selectionsInventario = ref([
 </script>
 
 <template>
-  <FloatNav :store="storeInventario" :selections="selectionsInventario" :busqueda="true" />
+   <FloatNav>
+      <ContentFloatOptions :store="storeInventario" :selections="selectionsInventario" :busqueda="true" />
+  </FloatNav>
   <section class="margin-float flex flex-col gap-6">
     <RouterView />
   </section>

@@ -1,10 +1,15 @@
 <script setup>
+import {defineAsyncComponent} from 'vue'
+const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
 
 </script>
 
 
 <template>
-    <section class="margin-float pt-4 flex flex-col gap-6">
+    <FloatNav>
+        content
+    </FloatNav>
+    <section class="margin-float flex flex-col gap-6">
         <RouterView />
     </section>
   </template>

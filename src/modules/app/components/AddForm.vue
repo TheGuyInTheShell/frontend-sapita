@@ -1,5 +1,5 @@
 <script setup>
-import { inject, ref, unref, defineEmits } from 'vue'
+import { inject, ref, unref } from 'vue'
 import InputText from './inputs/InputText.vue';
 import InputSelect from './inputs/InputSelect.vue';
 import { apiBase } from '../api/useApi';

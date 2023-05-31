@@ -54,6 +54,12 @@ const rutasNavegables = ref([
                <CustomLink :seccion="seccion"></CustomLink>
             </RouterLink>
          </li>
+         <li>
+               <button class="flex items-center p-2 w-full rounded-lg text-gray-300 dark:text-white dark:bg-slate-900 hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
+                  <img :src=" '/assets/icons/dashboard/logout.svg' " alt="icon">
+                  <span class="ml-3">Cerrar sesion</span>
+               </button>
+         </li>
       </ul>
    </div>
 </aside>

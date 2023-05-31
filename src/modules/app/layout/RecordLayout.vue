@@ -2,6 +2,11 @@
 import { ref, defineAsyncComponent, provide } from 'vue';
 import { useRecordStore } from '../store/record';
 
+const ContentFloatOptions = defineAsyncComponent(()=>import('../components/ContentFloatOptions.vue'))
+const AddModal = defineAsyncComponent(()=>import('../components/AddModal.vue'))
+const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
+const PaginationFooter = defineAsyncComponent(()=>import('../components/PaginationFooter.vue'));
+
 provide("inputs", [
   {
     text: "nombre",
@@ -28,9 +33,6 @@ provide("inputs", [
 
 provide("route", "tareas")
 
-const AddModal = defineAsyncComponent(()=>import('../components/AddModal.vue'))
-const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
-const PaginationFooter = defineAsyncComponent(()=>import('../components/PaginationFooter.vue'));
 
 const storeRecord = useRecordStore() 
 
@@ -57,7 +59,9 @@ const selectionsRecord = ref([
       <AddModal />
    </section>
 
-  <FloatNav :store="storeRecord" :selections="selectionsRecord" :busqueda="true" />
+  <FloatNav>
+      <ContentFloatOptions :store="storeRecord" :selections="selectionsRecord" :busqueda="true" />
+  </FloatNav>
 
   <section class="margin-float pb-28">
     <RouterView />
