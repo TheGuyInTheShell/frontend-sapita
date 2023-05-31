@@ -6,69 +6,28 @@ import { useInventarioStore } from '../store/inventario';
 
 const storeInventario = useInventarioStore()
 
-
-const subRutasNavegables = ref([
-  {
-    titulo: 'Total',
-    icono: 'history',
-    link: {
-      nombre: 'app-record',
-      ruta: '/app/record'
+const selectionsInventario = ref([
+    {
+    name: 'order',
+    text: 'orden',
+    options: ['asc', 'desc']
+    },
+    {
+      name: 'by',
+      text: 'por',
+      options: ['nombre', 'id']
+    },
+    {
+      name: 'from',
+      text: 'desde',
+      options: ['todo', 'componentes', 'componentes en uso', 'componentes sin uso']
     }
-  },
-  {
-    titulo: 'Componentes',
-    icono: 'history',
-    link: {
-      nombre: 'app-record',
-      ruta: '/app/record'
-    }
-  },
-  {
-    titulo: 'et',
-    icono: 'nostrud',
-    link: {
-      nombre: 'aute',
-      ruta: 'qui'
-    }
-  },
-  {
-    titulo: 'laborum',
-    icono: 'officia',
-    link: {
-      nombre: 'velit',
-      ruta: 'eu'
-    }
-  },
-  {
-    titulo: 'voluptate',
-    icono: 'magna',
-    link: {
-      nombre: 'proident',
-      ruta: 'non'
-    }
-  },
-  {
-    titulo: 'id',
-    icono: 'aliquip',
-    link: {
-      nombre: 'occaecat',
-      ruta: 'laboris'
-    }
-  },
-  {
-    titulo: 'ullamco',
-    icono: 'pariatur',
-    link: {
-      nombre: 'incididunt',
-      ruta: 'aliquip'
-    }
-  }
 ])
+
 </script>
 
 <template>
-  <FloatNav :subRutasNavegables="subRutasNavegables" :busqueda="true" />
+  <FloatNav :store="storeInventario" :selections="selectionsInventario" :busqueda="true" />
   <section class="margin-float flex flex-col gap-6">
     <RouterView />
   </section>

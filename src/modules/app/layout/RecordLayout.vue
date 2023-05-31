@@ -34,42 +34,17 @@ const PaginationFooter = defineAsyncComponent(()=>import('../components/Paginati
 
 const storeRecord = useRecordStore() 
 
-const subRutasNavegables = ref([
+const selectionsRecord = ref([
   {
-    titulo: 'Total',
-    nombre: 'app-record',
-    ruta: '/app/record'
+    name: 'order',
+    text: 'orden',
+    options: ['asc', 'desc']
   },
   {
-    titulo: 'Componentes',
-    nombre: 'app-record',
-    ruta: '/app/record'
+      name: 'by',
+      text: 'por',
+      options: ['nombre', 'id']
   },
-  {
-    titulo: 'et',
-    nombre: 'aute',
-    ruta: 'qui'
-  },
-  {
-    titulo: 'laborum',
-    nombre: 'velit',
-    ruta: 'eu'
-  },
-  {
-    titulo: 'voluptate',
-    nombre: 'proident',
-    ruta: 'non'
-  },
-  {
-    titulo: 'id',
-    nombre: 'occaecat',
-    ruta: 'laboris'
-  },
-  {
-    titulo: 'ullamco',
-    nombre: 'incididunt',
-    ruta: 'aliquip'
-  }
 ])
 
 
@@ -82,7 +57,7 @@ const subRutasNavegables = ref([
       <AddModal />
    </section>
 
-  <FloatNav :store="storeRecord" :subRutasNavegables="subRutasNavegables" :busqueda="true" />
+  <FloatNav :store="storeRecord" :selections="selectionsRecord" :busqueda="true" />
 
   <section class="margin-float pb-28">
     <RouterView />
