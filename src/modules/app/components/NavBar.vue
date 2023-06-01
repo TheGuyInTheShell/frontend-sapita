@@ -20,7 +20,7 @@ const dateNow = new Date().toLocaleDateString()
             </div>
         </div>
         <div class="font-medium dark:text-white">
-            <h1>Elieser Alvarado</h1>
+            <h1>Omarleen Perez</h1>
             <h2 class="text-sm text-gray-500 dark:text-gray-400">{{ dateNow }}</h2>
         </div>
         </div>

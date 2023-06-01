@@ -14,8 +14,10 @@ export const useRecordStore = defineStore('record', () => {
 
     function setQuery(arrayParameter) {
         arrayParameter.forEach(el => {
+            urlEncode.delete(el.key)
             urlEncode.append(el.key, el.value)
         })
+        urlEncode.delete('pag')
         urlEncode.append('pag', paginationSelected.value)
         query.value = urlEncode.toString()
     }
@@ -26,6 +28,7 @@ export const useRecordStore = defineStore('record', () => {
 
     function setPagination(value) {
         if (value >= 0) {
+            urlEncode.delete('pag')
             paginationSelected.value = value
             urlEncode.append('pag', value)
             query.value = urlEncode.toString()

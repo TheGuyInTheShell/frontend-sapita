@@ -16,7 +16,7 @@ onMounted(()=>{
 
 <template>
   <nav class="float-layout-w">
-    <div ref="floatNavContent" class="float-layout-w fixed z-12 flex flex-wrap place-items-center bg-gray-500 p-2 -translate-x-2 z-10">
+    <div ref="floatNavContent" class="float-layout-w fixed z-12 flex flex-wrap justify-center place-items-center bg-gray-500 p-2 -translate-x-2 z-10">
      <slot></slot>
     </div>
   </nav>

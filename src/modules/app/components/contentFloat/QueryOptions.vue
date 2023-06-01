@@ -1,7 +1,7 @@
 <script setup>
 
 import { ref, watch } from 'vue';
-import InputSelect from './inputs/InputSelect.vue';
+import InputSelect from '../inputs/InputSelect.vue';
 
 const props = defineProps({
   selections: {
