@@ -6,7 +6,7 @@ import { useRecordStore } from '../../store/record'
 
 const storeRecord = useRecordStore()
 
-const tableRows = computed(() => storeRecord.getRecord)
+const tableRows = computed(() => storeRecord.getData)
 
 const {isLoading} = useGetData({
     store: storeRecord,

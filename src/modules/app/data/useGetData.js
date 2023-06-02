@@ -35,9 +35,9 @@ function useGetData({store, subRoute}){
         },
         {
             cacheTime: 1000 * 60 * 3,
-            refetchOnReconnect: 'always',
             enabled: query
         },
+        
     )
     return {
         isLoading,

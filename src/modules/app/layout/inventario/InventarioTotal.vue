@@ -1,5 +1,5 @@
 <script setup>
-import  {computed, defineAsyncComponent} from 'vue'
+import  { computed, defineAsyncComponent } from 'vue'
 import { useInventarioStore } from '../../store/inventario';
 import useGetData from '../../data/useGetData';
 
@@ -7,7 +7,7 @@ const storeInventario = useInventarioStore()
 
 const ItemInventario = defineAsyncComponent(()=> import('../../components/ItemInventario.vue'))
 
-const itemsInventario = computed(()=> storeInventario.getInventario)
+const itemsInventario = computed(()=> storeInventario.getData)
 
 const {isLoading} = useGetData({
     store: storeInventario,

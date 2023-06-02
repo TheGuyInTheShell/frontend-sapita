@@ -7,6 +7,7 @@ const AddModal = defineAsyncComponent(()=>import('../components/AddModal.vue'))
 const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
 const PaginationFooter = defineAsyncComponent(()=>import('../components/PaginationFooter.vue'));
 
+
 provide("inputs", [
   {
     text: "nombre",
