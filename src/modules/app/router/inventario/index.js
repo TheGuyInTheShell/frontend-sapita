@@ -2,7 +2,7 @@ const InventarioSubRoutes = [
     {
      path: '',
      name: 'inventario-total',
-     component: ()=> import('../../layout/inventario/InventarioTotal.vue'),
+     component: ()=> import('../../layout/inventario/InventarioDisplay.vue'),
     },
  ]
 

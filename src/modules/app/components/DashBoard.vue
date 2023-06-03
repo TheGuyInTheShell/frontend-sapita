@@ -15,7 +15,7 @@ const rutasNavegables = ref([
       titulo: 'Estadisticas',
       icono: 'chart-infographic',
       link: {
-         nombre: 'estadisticas-mensuales',
+         nombre: 'estadisticas-display',
          ruta: '/estadisticas'
       }
    },

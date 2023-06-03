@@ -6,19 +6,19 @@ const SubRoutes = defineAsyncComponent(()=>import('../components/contentFloat/Su
 const routesArray = [
     {
         titulo: "Totales",
-        nombre: "total"
+        hash: ""
     },
     {
         titulo: "Mensuales",
-        nombre: "mensuales"
+        hash: "#mensuales"
     },
     {
         titulo: "Anuales",
-        nombre: "anuales"
+        hash: "#anuales"
     },
     {
         titulo: "desempeño",
-        nombre: "desempenio"
+        hash: ""
     }
 ]
 

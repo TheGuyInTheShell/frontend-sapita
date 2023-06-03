@@ -1,8 +1,8 @@
 const EstadisticasSubRoutes = [
            {
             path: '',
-            name: 'estadisticas-mensuales',
-            component: ()=> import('../../layout/estadisticas/GraficasMensuales.vue'),
+            name: 'estadisticas-display',
+            component: ()=> import('../../layout/estadisticas/GraficasDisplay.vue'),
            },
         ]
 
