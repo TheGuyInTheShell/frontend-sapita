@@ -27,15 +27,6 @@ const rutasNavegables = ref([
          ruta: '/inventario'
       }
    },
-   {
-      titulo: 'Trabajadores',
-      icono: 'users',
-      link: {
-         nombre: 'app-trabajadores',
-         ruta: '/trabajadores'
-      }
-   },
-
 ])
 
 </script>
