@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import useGetData from '../../data/useGetData'
 import TableHead from '../../components/TableHead.vue'
 import { useRecordStore } from '../../store/record'
+import AddModal from '../../components/AddModal.vue'
 
 const storeRecord = useRecordStore()
 
@@ -27,9 +28,7 @@ const {isLoading} = useGetData({
         <!-- row -->
         <tr class="row" v-for="row in tableRows" :key="row.nombre + row.id">
           <th>
-            <label>
-              <input type="checkbox" class="checkbox" />
-            </label>
+            <AddModal :simbol="'¡'" :custom-class="'rounded-full w-12 h-12 font-semibold'"/>
           </th>
           <td>
             <section>
@@ -43,13 +42,16 @@ const {isLoading} = useGetData({
             </p>
             <p v-else></p>
           </td>
-          <td>{{ row.asignado }}</td>
-          <td>{{ row.iniciado }}</td>
-          <td v-if="row.sitio_implementacion.desarrollo === 'interno'">
+          <td>
+              <p>
+              {{ row.descripcion }}
+              </p>
+          </td>
+          <td v-if="row.sitio_implementacion?.desarrollo === 'interno'">
             <h2 class="text-center">Interno</h2>
           </td>
           <td v-else>
-            <div class="tooltip tooltip-info" :data-tip="row.sitio?.detalles">
+            <div class="tooltip tooltip-info" :data-tip="row.sitio_implementacion?.detalles">
               <button class="btn btn-primary btn-xs">Externo</button>
             </div>
           </td>

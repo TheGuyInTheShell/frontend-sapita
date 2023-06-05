@@ -22,10 +22,15 @@ const useGetEstadisticas = ( hash )=>{
         getData,
         {
            async onSuccess( res ) {
+                   try {
                     dataPackage.value = await processEstadisticas.toChartData(res.data) 
-                    console.log(dataPackage.value)
                     isLoading.value = false
                     isError.value = false
+                   } catch (error) {
+                    console.error(error)
+                    isLoading.value = false
+                    isError.value = true
+                   }
             },
             onError(error){
                 if (isAxiosError(error)) {

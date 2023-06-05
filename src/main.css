@@ -11,11 +11,17 @@
 }
 
 .tranlate-btn-add{
-    transform: translate( calc(100vw - 7rem), calc(100vh - 9rem) );
+    transform: translate(calc(100vw - 21rem), calc(100vh - 13rem));
+}
+
+@media (min-width: 638px) {
+    .tranlate-btn-add{
+        transform: translate(calc(100vw - 21rem), calc(100vh - 13rem));
+    }
 }
 
 .translate-modal{
-    transform: translate(calc(6rem - 100vw), calc(5rem - 100vh));
+    transform: translate(calc(100vw - 5.5rem), calc(100vh - 12.5rem));
 }
 @media (min-width: 638px){
   

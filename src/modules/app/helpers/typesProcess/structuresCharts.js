@@ -24,4 +24,17 @@ datasets: [
 ]
 }
 
+export const barStructure = {
+  title: '',
+  type: 'bar',
+  labels: [],
+  datasets: [
+    {
+      label: '',
+      backgroundColor: '',
+      data: []
+    }
+  ]
+}
+
 export const colorPallete = ['#29BF12', '#F21B3F', '#08BDBD', '#FF9914', '#ABFF4F']

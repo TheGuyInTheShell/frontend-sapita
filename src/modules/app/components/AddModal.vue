@@ -2,6 +2,11 @@
 import {ref} from 'vue'
 import AddForm from './AddForm.vue'
 
+const props = defineProps({
+    simbol: String,
+    customClass : String
+})
+
 const closeDialog = ref(null)
 
 </script>
@@ -9,7 +14,9 @@ const closeDialog = ref(null)
 
     <div class="z-14">
             
-    <label for="my-modal-3" class="btn font-bold w-18 h-18 rounded-xl flex items-center"><p class="text-3xl -translate-y-1">+</p></label>
+    <label for="my-modal-3" :class="props.customClass ? props.customClass + ' btn font-bold ' : 'btn font-bold w-18 h-18 rounded-xl'">
+        <p class="text-3xl -translate-y-1">{{ props.simbol ? props.simbol : '+' }}</p>
+    </label>
             <!-- Put this part before </body> tag -->
     <input ref="closeDialog" type="checkbox" id="my-modal-3" class="modal-toggle" />
     <div class="modal fixed  translate-modal w-screen h-screen">

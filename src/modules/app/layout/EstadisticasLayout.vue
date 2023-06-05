@@ -18,7 +18,7 @@ const routesArray = [
     },
     {
         titulo: "desempeño",
-        hash: ""
+        hash: "#desempenio"
     }
 ]
 

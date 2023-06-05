@@ -62,7 +62,7 @@ const selectionsRecord = ref([
       <QueryOptions :store="storeRecord" :selections="selectionsRecord" :busqueda="true" />
   </FloatNav>
 
-  <section class="margin-float pb-28">
+  <section class="margin-float pb-12">
     <RouterView />
   </section>
 
