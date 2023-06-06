@@ -11,7 +11,7 @@
 }
 
 .tranlate-btn-add{
-    transform: translate(calc(100vw - 21rem), calc(100vh - 13rem));
+    transform: translate(calc(100vw - 5rem), calc(100vh - 12.5rem));
 }
 
 @media (min-width: 638px) {
@@ -21,12 +21,12 @@
 }
 
 .translate-modal{
-    transform: translate(calc(100vw - 5.5rem), calc(100vh - 12.5rem));
+    transform: translate(calc(6rem - 100vw), calc(5rem - 100vh));
 }
 @media (min-width: 638px){
   
     .tranlate-btn-add{
-        transform: translate(calc(100vw - 22rem), calc(100vh - 9rem));
+        transform: translate(calc(100vw - 22rem), calc(100vh - 9.5rem));
     }
     .translate-modal{
         margin-left: 12vw;

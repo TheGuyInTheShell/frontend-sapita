@@ -1,38 +1,14 @@
 <script setup>
-import { ref, defineAsyncComponent, provide } from 'vue';
+import { ref, defineAsyncComponent } from 'vue';
 import { useRecordStore } from '../store/record';
 import QueryOptions from '../components/contentFloat/QueryOptions.vue';
+import { useContextStore } from '../store/context';
 
 const AddModal = defineAsyncComponent(()=>import('../components/AddModal.vue'))
 const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
 const PaginationFooter = defineAsyncComponent(()=>import('../components/PaginationFooter.vue'));
 
-
-provide("inputs", [
-  {
-    text: "nombre",
-    name: "nombre",
-    type: "text"
-  },
-  {
-    text: "descripcion",
-    name: "descripcion",
-    type: "text"
-  },
-  {
-    text: "donde sera el desarrollo?",
-    name: "sitio_desarrollo",
-    type: "select",
-    options: ["interno", "externo"]
-  },
-  {
-    text: "detalles del sitio",
-    name: "sitio_detalles",
-    type: "text",
-  },
-])
-
-provide("route", "tareas")
+const contextStore = useContextStore()
 
 const storeRecord = useRecordStore() 
 
@@ -49,13 +25,46 @@ const selectionsRecord = ref([
   },
 ])
 
+const handleInputsAddRecord = ()=>{
+  
+  contextStore.setFormConf({
+    inputs: [
+    {
+      text: "nombre",
+      name: "nombre",
+      type: "text"
+    },
+    {
+      text: "descripcion",
+      name: "descripcion",
+      type: "text"
+    },
+    {
+      text: "donde sera el desarrollo?",
+      name: "sitio_desarrollo",
+      type: "select",
+      options: ["interno", "externo"]
+    },
+    {
+      text: "detalles del sitio",
+      name: "sitio_detalles",
+      type: "text",
+    },
+  ],
+    verb: "post",
+    route: "tareas"
+  })
+}
+
 </script>
 
 
 <template>
    
    <section class="tranlate-btn-add fixed flex items-end pb-10 z-13">
-      <AddModal />
+      <AddModal @showForm="handleInputsAddRecord">
+        <p class="text-xl font-bold">+</p>
+      </AddModal>
    </section>
 
   <FloatNav>
