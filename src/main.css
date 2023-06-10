@@ -21,7 +21,7 @@
 }
 
 .translate-modal{
-    transform: translate(calc(6rem - 100vw), calc(5rem - 100vh));
+    transform: translate(calc(4rem - 100vw), calc(9rem - 100vh));
 }
 @media (min-width: 638px){
   
@@ -29,6 +29,7 @@
         transform: translate(calc(100vw - 22rem), calc(100vh - 9.5rem));
     }
     .translate-modal{
+        transform: translate(calc(6rem - 100vw), calc(6rem - 100vh));
         margin-left: 12vw;
     }
    

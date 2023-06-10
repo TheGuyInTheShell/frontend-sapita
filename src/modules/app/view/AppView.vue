@@ -5,9 +5,13 @@ import { initDrawers, initCollapses } from 'flowbite'
 import NavBar from '../components/NavBar.vue'
 import DashBoard from '../components/DashBoard.vue'
 import { useSessionStore } from '../../login/store/session'
-// initialize components based on data attribute selectors
+import { useContextStore } from '../store/context'
 
-const store = useSessionStore()
+const sessionStore = useSessionStore()
+const contextStore = useContextStore()
+
+contextStore.setInitRender()
+
 onMounted(() => {
    // initAccordions();
    // initCarousels();
@@ -19,8 +23,10 @@ onMounted(() => {
    //  initPopovers();
    //  initTabs();
    //  initTooltips();
-   store.initSession()
+   sessionStore.initSession()
 })
+
+
 
 </script>
 
@@ -29,7 +35,7 @@ onMounted(() => {
         <div class="w-full">
             <NavBar />
             <DashBoard />
-            <main class="pl-2 sm:p-2 sm:ml-64 bg-slate-800">
+            <main class="pl-2 sm:p-2 sm:ml-64 bg-slate-800 overflow-hidden">
                 <RouterView />
             </main>
         </div>

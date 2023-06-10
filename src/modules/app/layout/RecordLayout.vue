@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineAsyncComponent } from 'vue';
+import { defineAsyncComponent } from 'vue';
 import { useRecordStore } from '../store/record';
 import QueryOptions from '../components/contentFloat/QueryOptions.vue';
 import { useContextStore } from '../store/context';
@@ -12,48 +12,36 @@ const contextStore = useContextStore()
 
 const storeRecord = useRecordStore() 
 
-const selectionsRecord = ref([
-  {
-    name: 'order',
-    text: 'orden',
-    options: ['asc', 'desc']
-  },
-  {
-      name: 'by',
-      text: 'por',
-      options: ['nombre', 'id']
-  },
-])
+const selectionsRecord = contextStore.getRecordOptionsSearch
 
 const handleInputsAddRecord = ()=>{
-  
   contextStore.setFormConf({
-    inputs: [
-    {
-      text: "nombre",
-      name: "nombre",
-      type: "text"
-    },
-    {
-      text: "descripcion",
-      name: "descripcion",
-      type: "text"
-    },
-    {
-      text: "donde sera el desarrollo?",
-      name: "sitio_desarrollo",
-      type: "select",
-      options: ["interno", "externo"]
-    },
-    {
-      text: "detalles del sitio",
-      name: "sitio_detalles",
-      type: "text",
-    },
-  ],
-    verb: "post",
-    route: "tareas"
-  })
+               inputs: [
+               {
+                 text: "nombre",
+                 name: "nombre",
+                 type: "text"
+               },
+               {
+                 text: "descripcion",
+                 name: "descripcion",
+                 type: "text"
+               },
+               {
+                 text: "donde sera el desarrollo?",
+                 name: "sitio_desarrollo",
+                 type: "select",
+                 options: ["interno", "externo"]
+               },
+               {
+                 text: "detalles del sitio",
+                 name: "sitio_detalles",
+                 type: "text",
+               },
+             ],
+               verb: "post",
+               route: "tareas"
+             })
 }
 
 </script>
