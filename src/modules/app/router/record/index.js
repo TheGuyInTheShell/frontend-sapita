@@ -1,7 +1,7 @@
 const RecordSubRoutes = [
     {
      path: '',
-     name: 'record-reciente',
+     name: 'record-display',
      component: ()=> import('../../layout/record/RecordDisplay.vue')
     },
  ]

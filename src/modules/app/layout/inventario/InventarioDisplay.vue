@@ -18,7 +18,7 @@ const {isLoading} = useGetData({
 
 <template>
         <div v-if="isLoading"><h1>Cargando....</h1></div>
-        <div v-else v-for="item in itemsInventario" :key="item.nombre">
+        <div v-else v-for="item in itemsInventario" :key="item.id">
                 <ItemInventario :index="item.id"  :nombre="item.nombre" :tipo="item.tipo" :descripcion="item.descripcion" />
         </div>
 

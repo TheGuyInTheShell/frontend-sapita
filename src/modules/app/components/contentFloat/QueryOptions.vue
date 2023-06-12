@@ -6,7 +6,6 @@ import InputSelect from '../inputs/InputSelect.vue';
 const props = defineProps({
   selections: {
     type: Array,
-    required: true
   },
   busqueda: {
     type: Boolean
@@ -44,17 +43,16 @@ const handleKeyPressFetch = (ev)=> {
   }, waitTimeFetch)
 }
 
-
 </script>
 
 
 
 <template>
-        <section v-if="props.busqueda" class="flex align-middle justify-center w-full">
+        <section v-if="props?.busqueda" class="flex align-middle justify-center w-full">
             <input @keyup="handleKeyPressFetch" type="text" placeholder="Busqueda" class="input input-bordered input-info w-full sm:w-3/4" />
         </section>
 
-        <section class="flex flex-wrap gap-2">
+        <section v-if="props?.selections" class="flex flex-wrap gap-2">
             <InputSelect v-for="selection in props.selections" :key="selection.name" :selection="selection" @changeSelectionVal="addToQueryBuild" />
         </section>
 </template>

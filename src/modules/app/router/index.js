@@ -1,6 +1,7 @@
 import EstadisticasSubRoutes from './estadisticas/index'
 import InventarioSubRoutes from './inventario/index'
 import RecordSubRoutes from './record/index'
+import ReportesSubRoutes from './reportes'
 
 const AppRoutes = [
     {
@@ -32,14 +33,12 @@ const AppRoutes = [
             children: InventarioSubRoutes, 
            },
            {
-            path: 'trabajadores',
-            name: 'app-trabajadores',
+            path: 'reportes',
+            name: 'app-reportes',
+            component: ()=> import('../layout/ReportesLayout.vue'),
+            children: ReportesSubRoutes,
            }
         ],
-        beforeEnter: (to, from) => {
-            console.log('beforeEnter')
-            return true
-          },
     },
 ]
 

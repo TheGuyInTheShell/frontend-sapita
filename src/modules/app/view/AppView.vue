@@ -13,16 +13,8 @@ const contextStore = useContextStore()
 contextStore.setInitRender()
 
 onMounted(() => {
-   // initAccordions();
-   // initCarousels();
    initCollapses();
-   //  initDismisses();
     initDrawers();
-   //  initDropdowns();
-   //  initModals();
-   //  initPopovers();
-   //  initTabs();
-   //  initTooltips();
    sessionStore.initSession()
 })
 

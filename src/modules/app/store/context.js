@@ -77,7 +77,7 @@ export const useContextStore = defineStore('context', ()=>{
          titulo: 'Record',
          icono: 'history',
          link: {
-            nombre: 'record-reciente',
+            nombre: 'record-display',
             ruta: '/app/record'
          }
       },
@@ -93,8 +93,16 @@ export const useContextStore = defineStore('context', ()=>{
          titulo: 'Inventario',
          icono: 'list-check',
          link: {
-            nombre: 'inventario-total',
+            nombre: 'inventario-display',
             ruta: '/inventario'
+         }
+      },
+      {
+         titulo: 'Reportes',
+         icono: 'report-analytics',
+         link: {
+            nombre: 'reportes-display',
+            ruta: '/reportes'
          }
       },
    ])

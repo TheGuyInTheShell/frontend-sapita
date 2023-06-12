@@ -10,14 +10,12 @@
     margin-top: var(--sizeVariable);
 }
 
-.tranlate-btn-add{
-    transform: translate(calc(100vw - 5rem), calc(100vh - 12.5rem));
+.min-h-custom{
+    min-height: 62vh;
 }
 
-@media (min-width: 638px) {
-    .tranlate-btn-add{
-        transform: translate(calc(100vw - 21rem), calc(100vh - 13rem));
-    }
+.tranlate-btn-add{
+    transform: translate(calc(100vw - 5rem), calc(100vh - 12.5rem));
 }
 
 .translate-modal{
@@ -36,7 +34,7 @@
 }
 
 .float-layout-w{
-    width: 98vw;
+    width: 100vw;
 }
 
 @media (min-width: 648px){

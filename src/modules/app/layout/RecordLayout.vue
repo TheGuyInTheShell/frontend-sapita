@@ -8,14 +8,14 @@ const AddModal = defineAsyncComponent(()=>import('../components/AddModal.vue'))
 const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
 const PaginationFooter = defineAsyncComponent(()=>import('../components/PaginationFooter.vue'));
 
-const contextStore = useContextStore()
+const storeContext = useContextStore()
 
 const storeRecord = useRecordStore() 
 
-const selectionsRecord = contextStore.getRecordOptionsSearch
+const selectionsRecord = storeContext.getRecordOptionsSearch
 
 const handleInputsAddRecord = ()=>{
-  contextStore.setFormConf({
+  storeContext.setFormConf({
                inputs: [
                {
                  text: "nombre",
