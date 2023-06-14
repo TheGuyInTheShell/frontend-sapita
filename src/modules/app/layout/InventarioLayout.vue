@@ -32,7 +32,7 @@ const selectionsInventario = ref([
    <FloatNav>
       <QueryOptions :store="storeInventario" :selections="selectionsInventario" :busqueda="true" />
   </FloatNav>
-  <section class="margin-float flex flex-col gap-6">
+  <section class="margin-float min-h-custom flex flex-col gap-6">
     <RouterView />
   </section>
   <PaginationFooter :store="storeInventario" />

@@ -59,7 +59,7 @@ const handleInputsAddRecord = ()=>{
       <QueryOptions :store="storeRecord" :selections="selectionsRecord" :busqueda="true" />
   </FloatNav>
 
-  <section class="margin-float pb-12">
+  <section class="margin-float min-h-custom">
     <RouterView />
   </section>
 

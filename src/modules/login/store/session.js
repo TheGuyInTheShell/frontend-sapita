@@ -4,20 +4,20 @@ import { defineStore } from 'pinia'
 export const useSessionStore = defineStore('session', () => {
     const logged  = ref(false)
     const session = reactive({
-        id_session: '',
+        session_hash: '',
         nombre: '',
-        token: '',
+        temp_token: '',
     })
 
-    const isLogged = computed(() =>  logged)
+    const isLogged = computed(() =>  logged.value)
 
     const sessionData = computed(() => session)
 
     const initSession = () => {
-        session.id_session = localStorage.getItem('id_session') || ''
+        session.session_hash = localStorage.getItem('session_hash') || ''
         session.nombre = '' || 'Usuario'
-        session.token = localStorage.getItem('token') || ''
-        if (session.id_session && session.token) {
+        session.temp_token = localStorage.getItem('temp_token') || ''
+        if (session.session_hash && session.temp_token) {
             logged.value = true
         }else{
             logged.value = false

@@ -1,41 +1,26 @@
+import { apiBase } from "../../app/api/useApi"
 import { useSessionStore } from "../store/session"
 import { useAlertStore } from "@/shared/store/alerts"
 
 const sessionStore = useSessionStore()
 const alertStore = useAlertStore()
 
-function useLogin(usuario, clave, state){
+function useLogin({
+    usuario, 
+    clave, 
+    state
+}){
     state.loading = true
-    const getSession = async (usuario, clave) => {
-        try {
-            const response = await new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve({
-                        ok: true,
-                        json: () => {
-                            return {
-                                id_session: '328r7nvhew',
-                                token: '123'
-                            }
-                        }
-                    })
-                }, 2000)
-            })
-            if(response.ok){
-                return response.json()
-            }
-        } catch (error) {
-            console.error(error.response)
-            return new Promise((resolve, reject) => {
-                reject(error)
-            })
+    apiBase.post('login', {
+        usuario,
+        clave
+    }).then(resp => {
+        if (resp.data.session_hash && resp.data.temp_token) {
+            localStorage.setItem('session_hash', resp.data.session_hash)
+            localStorage.setItem('temp_token', resp.data.temp_token)
+            sessionStore.initSession()
         }
-    }
-
-    getSession(usuario, clave).then(resp => {
-        localStorage.setItem('id_session', resp.id_session)
-        localStorage.setItem('token', resp.token)
-        sessionStore.initSession()
+        console.log(sessionStore.sessionData, resp.data)
         state.loading = false
     }).catch(err => {
         console.error(err)

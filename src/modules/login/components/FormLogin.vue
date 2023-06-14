@@ -1,37 +1,43 @@
 <script setup>
-import {ref, onBeforeMount, reactive, watchEffect} from 'vue'
+import {ref, onBeforeMount, reactive, watchEffect, computed} from 'vue'
 import useLogin from '../utils/useLogin'
 import {useSessionStore} from  '../store/session'
 import {useRouter} from 'vue-router'
 
 const route = useRouter()
-const store = useSessionStore()
+const sessionStore = useSessionStore()
+
 const usuario = ref('')
 const clave = ref('')
 const state = reactive({
     loading: false,
 })
-const {initSession, sessionData, isLogged} = store
 
+const sessionData = sessionStore.sessionData 
+const initSession = sessionStore.initSession
+const isLogged = computed(()=> sessionStore.isLogged)
 
 onBeforeMount(()=>{
-    initSession()
-    if (isLogged.value && sessionData.id_session && sessionData.token) {
+    initSession() 
+    if (isLogged.value && sessionData.session_hash) {
         route.push('/app')
     }
 })
 
 
 watchEffect(()=>{
-    if (isLogged.value && sessionData.id_session && sessionData.token) {
-        console.log('pass')
+    if (isLogged.value && sessionData.session_hash) {
         route.push('/app')
     }
 })
 
 function handleLogin (ev){
     ev.preventDefault()
-    useLogin(usuario.value, clave.value, state)
+    useLogin({
+        usuario: usuario.value, 
+        clave: clave.value, 
+        state
+    })
 }
 
 </script>

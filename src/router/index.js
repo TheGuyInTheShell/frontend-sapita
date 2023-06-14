@@ -16,4 +16,16 @@ const router = createRouter({
   ]
 })
 
+router.beforeEach((to) => {
+  if (to.path.startsWith('/app')) {
+      if (localStorage.getItem('session_hash')) {
+        return true
+      }
+      return {name: 'login'}
+    }
+
+    return true
+  }
+)
+
 export default router

@@ -69,7 +69,7 @@ const handleToFormAddReport = ()=>{
 @media (min-width: 638px){
   
     .btn-to{
-        transform: translate(calc(100vw - 22rem), calc(80vh - 10rem));
+        transform: translate(calc(100vw - 22rem), calc(75vh - 10rem));
     }
 
   }

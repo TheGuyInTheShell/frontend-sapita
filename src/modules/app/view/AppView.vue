@@ -13,12 +13,10 @@ const contextStore = useContextStore()
 contextStore.setInitRender()
 
 onMounted(() => {
-   initCollapses();
+    initCollapses();
     initDrawers();
-   sessionStore.initSession()
+    sessionStore.initSession()
 })
-
-
 
 </script>
 

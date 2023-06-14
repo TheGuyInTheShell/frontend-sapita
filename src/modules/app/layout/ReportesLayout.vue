@@ -9,9 +9,7 @@ const storeContext = useContextStore()
 
 const storeReportes = useReportesStore()
 
-
 const selectionsRecord = storeContext.getRecordOptionsSearch
-
 
 </script>
 
@@ -22,7 +20,7 @@ const selectionsRecord = storeContext.getRecordOptionsSearch
       <QueryOptions :store="storeReportes" :selections="selectionsRecord" :busqueda="true" />
   </FloatNav>
 
-  <section class="margin-float min-h-custom pb-12 pr-1">
+  <section class="margin-float min-h-custom pr-1">
     <RouterView />
   </section>
 
