@@ -1,9 +1,8 @@
 import { dougnutStructure, colorPallete } from "./structuresCharts"
 
 export default class ProcessMensual {
-    constructor(){
-        this.type = 'mensuales'
-    }
+    static type  = 'mensuales'
+    constructor(){}
     #countMethod({sumatory, regex, colors, title}){
         const result = structuredClone(dougnutStructure)
         result.title = title

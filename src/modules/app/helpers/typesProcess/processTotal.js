@@ -1,9 +1,8 @@
 import { dougnutStructure, colorPallete } from "./structuresCharts"
 
 export default class ProcessTotal {
-    constructor(){
-        this.type = 'total'
-    }
+    static type = 'total'
+    constructor(){}
     toChartData(data){
         this.content = data.content
         

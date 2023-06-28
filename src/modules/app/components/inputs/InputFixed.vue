@@ -11,7 +11,7 @@ const props = defineProps({
 
 
 <template>
-    <input type="text" :id="props.input?.name" :placeholder="props.input?.name + ': ' + props.input?.text" class="input input-bordered font-bold text-xl w-full" disabled />
+    <input type="text" :data="props.input?.text" :id="props.input?.name" :placeholder="props.input?.name + ': ' + props.input?.text" class="input input-bordered font-bold text-xl w-full" disabled />
 </template>
 
 <style>

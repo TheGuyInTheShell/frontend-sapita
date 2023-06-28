@@ -1,12 +1,17 @@
 import {apiBase} from "../api/useApi"
+import { useRouter } from "vue-router"
 import { useQuery } from "@tanstack/vue-query"
 import { isAxiosError } from "axios"
 import { computed, ref } from "vue"
+import { useSessionStore } from "../../login/store/session"
 import ProcessEstadisticas from '../helpers/processData'
 
 const processEstadisticas = new ProcessEstadisticas()
 
 const useGetEstadisticas = ( hash )=>{
+    const router = useRouter()
+    const sessionStore = useSessionStore()
+    const tries = ref(0)
     const isLoading = ref(true)
     const isError = ref(false)
     const subRoute = computed(()=> '/' + hash.value.substring(1) || '')
@@ -38,12 +43,19 @@ const useGetEstadisticas = ( hash )=>{
                 }else{
                     console.error(error)
                 }
+                if(error.response.status === 401){
+                    tries.value += 1
+                    if (tries.value === 2) {
+                        sessionStore.dropSession()
+                        router.push({name: 'login'})
+                    }
+                }
                 isError.value = true
                 isLoading.value= false
             }
         },
         {
-            cacheTime: 1000 * 60 * 3,
+            cacheTime: 1000 * 60 * 10,
             enabled: subRoute
         },
         

@@ -11,22 +11,24 @@ export default class ProcessEstadisticas {
     constructor(){
         let strategiesSet = []
         if (contextStore.getUserType === 'render_admin') {
-            strategiesSet = [new ProcessAnual(), 
-                new ProcessMensual(), 
-                    new ProcessTotal(), 
-                    new ProcessDesempenio(),
-                    new ProcessPersonal(),
+            strategiesSet = [
+                    ProcessAnual, 
+                    ProcessMensual, 
+                    ProcessTotal, 
+                    ProcessDesempenio,
+                    ProcessPersonal,
                 ]
         }
         if(contextStore.getUserType === 'render_current'){
-            strategiesSet = [new ProcessPersonal()]
+            strategiesSet = [ProcessPersonal]
         }
         this.strategies = strategiesSet
     }
     toChartData(data){
-        const strategy = this.strategies.find(el => el.type === data.type)
+        const strategyClass = this.strategies.find(el => el.type === data.type)
         return new Promise((res, rej)=>{
-            if (strategy) {
+            if (strategyClass) {
+                const strategy = new strategyClass()
                 const result = strategy.toChartData(data)
                 res(result)
             }

@@ -1,5 +1,4 @@
 <script setup>
-
 import { ref, watch } from 'vue';
 import InputSelect from '../inputs/InputSelect.vue';
 
@@ -31,7 +30,7 @@ let lastKeyPressTime = 0
 
 const handleKeyPressFetch = (ev)=> {
   lastKeyPressTime = ev.timeStamp
-  const waitTimeFetch = 100 
+  const waitTimeFetch = 200 
   setTimeout(()=>{
     const sleepTime = performance.now() - lastKeyPressTime 
     if (sleepTime > waitTimeFetch) {

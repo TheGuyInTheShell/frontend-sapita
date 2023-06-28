@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
-export const useReportesStore = defineStore('reporteForm', ()=>{
+export const useReporteFormStore = defineStore('reporteForm', ()=>{
 
     const saveComponents = ref(new Map())
 
@@ -14,34 +14,34 @@ export const useReportesStore = defineStore('reporteForm', ()=>{
     const setStockComponets = (data = [])=>{
        data.forEach(comp => 
         setTimeout(()=>{
-            stockComponents.value.set(comp.id, {
+            stockComponents.value.set(+comp.id, {
                 nombre: comp.nombre,
                 serial: comp.serial,
-                marca: comp.marca,
-                modelo: comp.modelo
             })
         })
        )
     }
 
     const toStockComponents = (id)=>{
+        id = +id
         if(saveComponents.value.has(id)){
-            stockComponents.value(id, saveComponents.value.get(id))
+            stockComponents.value.set(id, saveComponents.value.get(id))
             saveComponents.value.delete(id)
         }
     }
-
+    
     const toSaveComponets = (id)=>{
+        id = +id
         if(stockComponents.value.has(id)){
-            saveComponents.value(id, stockComponents.value.get(id))
+            saveComponents.value.set(id, stockComponents.value.get(id))
             stockComponents.value.delete(id)
         }
     }
 
-    const toJsonData = (descripcion = '')=>{
-
+    const toJsonData = (descripcion = '', tarea_id = '')=>{
         return JSON.stringify({
             descripcion,
+            tarea_id: +tarea_id.split(':')[0],
             componentes_usados: [...saveComponents.value].map(([key])=> key).join(';')
         })
     } 

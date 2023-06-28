@@ -7,7 +7,15 @@ const dataUtil = () => {
     const getData = computed(() => data.value)
 
     const query = ref('')
+
+    const showNavs = ref(true)
     
+    const getShow = computed(()=> showNavs.value)
+
+    function swapShow(){
+        showNavs.value = !showNavs.value
+    }
+
     const urlEncode = new URLSearchParams()
 
     const getQuery = computed(() => query.value)
@@ -26,7 +34,7 @@ const dataUtil = () => {
     
     const getPagination = computed(() => paginationSelected.value)
 
-    function setPagination(value) {
+    const setPagination = (value) => {
         if (value >= 0) {
             urlEncode.delete('pag')
             paginationSelected.value = value
@@ -35,7 +43,12 @@ const dataUtil = () => {
         }
     }
 
-    function loadData(_data = []) {
+    const resetQuery = ()=>{
+        query.value = ''
+        paginationSelected.value = 0
+    }
+
+    const loadData = (_data = []) => {
         data.value = _data
     }
     
@@ -46,6 +59,9 @@ const dataUtil = () => {
         loadData,
         getPagination,
         setPagination,
+        resetQuery,
+        getShow,
+        swapShow,
     }
 }
 

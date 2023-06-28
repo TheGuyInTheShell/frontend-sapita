@@ -1,7 +1,7 @@
 <script setup>
 
 const props = defineProps({
-    tipo: {
+    tipo_id: {
         type: String,
         required: true
     },
@@ -28,7 +28,7 @@ const props = defineProps({
                 <h3 class="text-xl font-medium">{{ props.nombre }}</h3>
                 <pre>{{ props.index + 1 }}</pre>
             </div>
-            <h4 class="text-lg">{{ props.tipo }}</h4>
+            <h4 class="text-lg">{{ props?.tipo_id }}</h4>
         </div>
         <article class="collapse-content">
             <p>{{ props.descripcion }}</p>

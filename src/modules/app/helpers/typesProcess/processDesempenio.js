@@ -3,9 +3,9 @@ import getMonths from "../getMonths"
 import { barStructure, colorPallete } from "./structuresCharts"
 
 export default class ProcessDesempenio extends SuperiorAnual {
+    static type = 'desempenio'
     constructor(){
-        super()
-        this.type = 'desempenio'
+        super() 
         this.months = getMonths(0, 12)
     }
     #getDesempenioIndividual(content){

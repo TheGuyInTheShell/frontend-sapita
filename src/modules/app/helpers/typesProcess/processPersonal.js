@@ -3,9 +3,9 @@ import getMonths from '../getMonths'
 import { colorPallete, dougnutStructure } from "./structuresCharts";
 
 export default class ProcessPersonal extends SuperiorAnual {
+    static type = 'personal'
     constructor(){
         super()
-        this.type = 'personal'
         this.months = getMonths(0, 12)
     }
     getPersonalFinRea(content){

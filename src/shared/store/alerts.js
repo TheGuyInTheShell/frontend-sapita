@@ -14,10 +14,10 @@ export const useAlertStore = defineStore('alerts', () => {
     alertConfig.show = false
   }
 
-  function setAlertConfig(config) {
+  function setAlertConfig({type, message}) {
     alertConfig.show = true
-    alertConfig.message = config.message
-    alertConfig.type = config.type
+    alertConfig.type = type
+    alertConfig.message = message
     setTimeout(() => {
       hideAlert()
     }, 2000)

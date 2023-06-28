@@ -28,7 +28,7 @@ const {isLoading} = useGetData({
       </thead>
       <tbody>
         <!-- row -->
-        <tr class="row" v-for="row in tableRows" :key="row.nombre + row.id">
+        <tr class="row" v-for="row in tableRows" :key="row.id">
           <TableData :row="row"/>
         </tr>
       </tbody>

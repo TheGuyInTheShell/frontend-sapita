@@ -10,11 +10,6 @@ const AppRoutes = [
         component: ()=> import('../view/AppView.vue'),
         children: [
            {
-            path: '',
-            name: 'app-home',
-            component: ()=> import('../layout/PrincipalLayout.vue'),
-           },
-           {
             path: 'record',
             name: 'app-record',
             component: ()=> import('../layout/RecordLayout.vue'),
@@ -37,7 +32,12 @@ const AppRoutes = [
             name: 'app-reportes',
             component: ()=> import('../layout/ReportesLayout.vue'),
             children: ReportesSubRoutes,
-           }
+           },
+           {
+            path: 'tokens',
+            name: 'app-tokens',
+            component: ()=> import('../layout/TokensLayout.vue')
+           },
         ],
         
     },

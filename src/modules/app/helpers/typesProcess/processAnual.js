@@ -2,9 +2,9 @@ import getMonths from "../getMonths";
 import SuperiorAnual from "./superiorAnual";
 
 export default class ProcessAnual extends SuperiorAnual{
+    static type = 'anuales'
     constructor(){
         super()
-        this.type = 'anuales'
         this.months = getMonths(0, 12)
     }
     toChartData(data){

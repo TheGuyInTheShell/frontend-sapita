@@ -1,9 +1,11 @@
 import { apiBase } from "../../app/api/useApi"
 import { useSessionStore } from "../store/session"
 import { useAlertStore } from "@/shared/store/alerts"
+import {useContextStore} from "@/modules/app/store/context"
 
 const sessionStore = useSessionStore()
 const alertStore = useAlertStore()
+const contextStore = useContextStore()
 
 function useLogin({
     usuario, 
@@ -15,12 +17,14 @@ function useLogin({
         usuario,
         clave
     }).then(resp => {
-        if (resp.data.session_hash && resp.data.temp_token) {
-            localStorage.setItem('session_hash', resp.data.session_hash)
-            localStorage.setItem('temp_token', resp.data.temp_token)
-            sessionStore.initSession()
+        const {session_hash, temp_token, render_type, trabajadores, trabajador} = resp.data
+        if (session_hash && temp_token && render_type) {
+            contextStore.setRenderType(render_type)
+            localStorage.setItem('session_hash', session_hash)
+            localStorage.setItem('temp_token', temp_token)
+            sessionStore.initSession(`${trabajador.nombre} ${trabajador.apellido}`)
+            contextStore.setInitRender(trabajadores)
         }
-        console.log(sessionStore.sessionData, resp.data)
         state.loading = false
     }).catch(err => {
         console.error(err)

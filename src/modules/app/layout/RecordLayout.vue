@@ -1,5 +1,5 @@
 <script setup>
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, onMounted } from 'vue';
 import { useRecordStore } from '../store/record';
 import QueryOptions from '../components/contentFloat/QueryOptions.vue';
 import { useContextStore } from '../store/context';
@@ -8,14 +8,18 @@ const AddModal = defineAsyncComponent(()=>import('../components/AddModal.vue'))
 const FloatNav = defineAsyncComponent(()=>import('../components/FloatNav.vue'))
 const PaginationFooter = defineAsyncComponent(()=>import('../components/PaginationFooter.vue'));
 
-const storeContext = useContextStore()
+const contextStore = useContextStore()
 
-const storeRecord = useRecordStore() 
+const recordStore = useRecordStore() 
 
-const selectionsRecord = storeContext.getRecordOptionsSearch
+onMounted(()=>{
+  recordStore.resetQuery()
+})
+
+const selectionsRecord = contextStore.getRecordOptionsSearch
 
 const handleInputsAddRecord = ()=>{
-  storeContext.setFormConf({
+  contextStore.setFormConf({
                inputs: [
                {
                  text: "nombre",
@@ -40,7 +44,8 @@ const handleInputsAddRecord = ()=>{
                },
              ],
                verb: "post",
-               route: "tareas"
+               route: "tareas",
+               saveable: true
              })
 }
 
@@ -56,14 +61,14 @@ const handleInputsAddRecord = ()=>{
    </section>
 
   <FloatNav>
-      <QueryOptions :store="storeRecord" :selections="selectionsRecord" :busqueda="true" />
+      <QueryOptions :store="recordStore" :selections="selectionsRecord" :busqueda="true" />
   </FloatNav>
 
   <section class="margin-float min-h-custom">
     <RouterView />
   </section>
 
-  <PaginationFooter :store="storeRecord" />
+  <PaginationFooter :store="recordStore" />
    
 </template>
 

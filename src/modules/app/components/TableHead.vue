@@ -4,6 +4,7 @@
         <th>Nombre</th>
         <th>Trabajador</th>
         <th>Descripcion</th>
+        <th>Estado</th>
         <th>Sitio</th>
     </tr>
 </template>

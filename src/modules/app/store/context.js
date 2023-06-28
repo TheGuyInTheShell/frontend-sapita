@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, ref, reactive  } from 'vue'
 
 export const useContextStore = defineStore('context', ()=>{
 
-      const userType = ref('render_current') 
+     const renderType = ref('render_current') 
 
      const inputsForm = ref([])
 
@@ -11,12 +11,12 @@ export const useContextStore = defineStore('context', ()=>{
      
      const fetchRoute = ref("")
 
-     const trabajadores = ref([
-         {
-            id: 2,
-            nombre: "Omarleen Perez"
-         }  
-     ])
+     const fetchOptions = reactive({
+         deletable: false,
+         saveable: false
+     })
+
+     const trabajadores = ref([])
 
      const recordOptionsSearch = ref([
       {
@@ -41,71 +41,103 @@ export const useContextStore = defineStore('context', ()=>{
 
      const getRoute = computed(()=> fetchRoute.value)
 
-     const getUserType = computed(()=> userType.value)
+     const getFetchOptions = computed(()=> fetchOptions)
 
-      const setFormConf = ({inputs, verb, route})=>{
+     const getUserType = computed(()=> renderType.value)
+
+     const setRenderType = (type = '')=>{
+         renderType.value = type
+     }
+
+      const setFormConf = ({inputs, verb, route, deletable, saveable})=>{
             inputsForm.value = inputs
             fetchVerb.value = verb
             fetchRoute.value = route
+            fetchOptions.deletable = deletable
+            fetchOptions.saveable = saveable
       }
 
 
-      const setRecordOptionsSearch = ()=>{
-         if (userType.value === 'render_admin') {
-            recordOptionsSearch.value.unshift(      {
-               name: 'from',
-               text: 'desde',
-               options: ['todas','pendientes', 'realizandose', 'finalizadas', 'descontinuadas']
-             })
+      const setOptions = ()=>{
+         if (renderType.value === 'render_admin') {
+            if (!recordOptionsSearch.value.find(el => el.name === 'from')) {
+               recordOptionsSearch.value.unshift(      {
+                  name: 'from',
+                  text: 'desde',
+                  options: ['todas','pendientes', 'realizandose', 'finalizadas', 'descontinuadas']
+                })
+            }
+            if(!dashBoard.value.find(el => el.titulo === 'Tokens')){
+               dashBoard.value.push({
+                  titulo: 'Tokens',
+                  icono: 'user-plus',
+                  link: {
+                     nombre: 'app-tokens',
+                     ruta: '/tokens'
+                  }
+               },)
+            }
          }
-
-         if (userType.value === 'render_current') {
+         if (renderType.value === 'render_current') {
+            if (!recordOptionsSearch.value.find(el => el.name === 'from')) {
             recordOptionsSearch.value.unshift({
                name: 'from',
                text: 'desde',
                options: ['pendientes', 'realizandose', 'finalizadas']
              })
+            }
          }
       }
 
-      const setInitRender = ()=>{
-         setRecordOptionsSearch()
+      const setInitRender = (_trabajadores)=>{
+         trabajadores.value = _trabajadores?.reduce((acc, el)=>
+         [
+            ...acc,
+            {
+               id: el.id,
+               nombre: `${el.nombre} ${el.apellido}`,
+            }
+         ]
+         ,[])
+         setOptions()
       }
 
-     const getDashBoard = computed(()=> [
-      {
-         titulo: 'Record',
-         icono: 'history',
-         link: {
-            nombre: 'record-display',
-            ruta: '/app/record'
-         }
-      },
-      {
-         titulo: 'Estadisticas',
-         icono: 'chart-infographic',
-         link: {
-            nombre: 'estadisticas-display',
-            ruta: '/estadisticas'
-         }
-      },
-      {
-         titulo: 'Inventario',
-         icono: 'list-check',
-         link: {
-            nombre: 'inventario-display',
-            ruta: '/inventario'
-         }
-      },
-      {
-         titulo: 'Reportes',
-         icono: 'report-analytics',
-         link: {
-            nombre: 'reportes-display',
-            ruta: '/reportes'
-         }
-      },
-   ])
+      const dashBoard = ref([
+         {
+            titulo: 'Record',
+            icono: 'history',
+            link: {
+               nombre: 'record-display',
+               ruta: '/app/record'
+            }
+         },
+         {
+            titulo: 'Estadisticas',
+            icono: 'chart-infographic',
+            link: {
+               nombre: 'estadisticas-display',
+               ruta: '/estadisticas'
+            }
+         },
+         {
+            titulo: 'Inventario',
+            icono: 'list-check',
+            link: {
+               nombre: 'inventario-display',
+               ruta: '/inventario'
+            }
+         },
+         {
+            titulo: 'Reportes',
+            icono: 'report-analytics',
+            link: {
+               nombre: 'reportes-display',
+               ruta: '/reportes'
+            }
+         },
+      ])
+
+     const getDashBoard = computed(()=> dashBoard.value)
 
      return {
         getDashBoard,
@@ -115,6 +147,8 @@ export const useContextStore = defineStore('context', ()=>{
         getTrabajadores,
         getRecordOptionsSearch,
         getUserType,
+        getFetchOptions,
+        setRenderType,
         setFormConf,
         setInitRender,
      }

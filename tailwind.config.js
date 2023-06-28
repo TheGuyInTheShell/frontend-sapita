@@ -11,6 +11,9 @@ export default {
     'alert-info', 
     'alert-warning', 
     'alert-error',
+    'loading', 
+    'loading-spinner', 
+    'loading-sm'
   ],
   theme: {
     extend: {
