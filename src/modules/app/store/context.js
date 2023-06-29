@@ -45,8 +45,8 @@ export const useContextStore = defineStore('context', ()=>{
 
      const getUserType = computed(()=> renderType.value)
 
-     const setRenderType = (type = '')=>{
-         renderType.value = type
+     const setRenderType = ()=>{
+         renderType.value = localStorage.getItem('render_type') || ''
      }
 
       const setFormConf = ({inputs, verb, route, deletable, saveable})=>{
@@ -86,10 +86,14 @@ export const useContextStore = defineStore('context', ()=>{
                options: ['pendientes', 'realizandose', 'finalizadas']
              })
             }
+            if(dashBoard.value.find(el => el.titulo === 'Tokens')){
+               dashBoard.value.filter(el => el.titulo !== 'Tokens')
+            }
          }
       }
 
-      const setInitRender = (_trabajadores)=>{
+      const setInitRender = async ()=>{
+         const _trabajadores = JSON.parse(localStorage.getItem('trabajadores'))
          trabajadores.value = _trabajadores?.reduce((acc, el)=>
          [
             ...acc,
@@ -99,6 +103,7 @@ export const useContextStore = defineStore('context', ()=>{
             }
          ]
          ,[])
+         setRenderType()
          setOptions()
       }
 

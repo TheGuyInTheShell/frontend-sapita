@@ -8,6 +8,7 @@ export const useSessionStore = defineStore('session', () => {
         session_hash: '',
         nombre: '',
         temp_token: '',
+        render_type: '',
         trabajadores: []
     })
 
@@ -15,9 +16,10 @@ export const useSessionStore = defineStore('session', () => {
 
     const sessionData = computed(() => session)
 
-    const initSession = (nombre) => {
+    const initSession = () => {
         session.session_hash = localStorage.getItem('session_hash') || ''
-        session.nombre = nombre
+        session.nombre = localStorage.getItem('nombre') || ''
+        session.render_type = localStorage.getItem('render_type')  || ''
         session.temp_token = localStorage.getItem('temp_token') || ''
         if (session.session_hash && session.temp_token) {
             logged.value = true

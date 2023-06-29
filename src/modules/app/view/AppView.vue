@@ -6,7 +6,9 @@ import NavBar from '../components/NavBar.vue'
 import DashBoard from '../components/DashBoard.vue'
 import { useSessionStore } from '../../login/store/session'
 import { useRouter } from 'vue-router'
+import { useContextStore } from '../store/context'
 
+const contextStore = useContextStore()
 const router = useRouter()
 
 const sessionStore = useSessionStore()
@@ -19,7 +21,9 @@ watch(isLogged, ()=>{
     }
 })
 
-sessionStore.initSession(sessionStore.sessionData.nombre)
+sessionStore.initSession()
+contextStore.setInitRender()
+
 onBeforeMount(() => {
     initCollapses();
     initDrawers();

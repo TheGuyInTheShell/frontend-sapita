@@ -19,11 +19,14 @@ function useLogin({
     }).then(resp => {
         const {session_hash, temp_token, render_type, trabajadores, trabajador} = resp.data
         if (session_hash && temp_token && render_type) {
-            contextStore.setRenderType(render_type)
             localStorage.setItem('session_hash', session_hash)
             localStorage.setItem('temp_token', temp_token)
-            sessionStore.initSession(`${trabajador.nombre} ${trabajador.apellido}`)
-            contextStore.setInitRender(trabajadores)
+            localStorage.setItem('render_type', render_type)
+            console.log(render_type)
+            localStorage.setItem('nombre', `${trabajador.nombre} ${trabajador.apellido}`)
+            localStorage.setItem('trabajadores', JSON.stringify(trabajadores))
+            sessionStore.initSession()
+            contextStore.setInitRender()
         }
         state.loading = false
     }).catch(err => {
