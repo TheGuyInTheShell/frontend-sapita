@@ -19,12 +19,13 @@ function useGetData({store, subRoute}){
         return res
     }
     
-    useQuery(
+    const {refetch} = useQuery(
         [store.$id, query],
         getData,
         {
             onSuccess( res ) {
                     store.loadData(res.data.content)
+                    console.log(res.data)
                     tries.value = 0
                     isLoading.value = false
                     isError.value = false
@@ -55,6 +56,7 @@ function useGetData({store, subRoute}){
     return {
         isLoading,
         isError,
+        refetch,
     }
 }
 

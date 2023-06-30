@@ -11,7 +11,7 @@ function useGetComponentes({badges, reporteId}){
         return res
     }
     
-    useQuery(
+    const {refetch} = useQuery(
         [reporteId],
         getData,
         {
@@ -29,13 +29,14 @@ function useGetComponentes({badges, reporteId}){
             }
         },
         {
-            cacheTime: 1000 * 60 * 10,
+            cacheTime: 1000 * 60 * 5,
         },
         
     )
     return {
         isLoading,
         isError,
+        refetch,
     }
 }
 

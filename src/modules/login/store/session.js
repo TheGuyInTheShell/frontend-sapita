@@ -37,9 +37,12 @@ export const useSessionStore = defineStore('session', () => {
         session.nombre = ''
         session.session_hash = ''
         session.temp_token = ''
+        session.render_type = ''
         session.trabajadores = []
         localStorage.removeItem('session_hash')
         localStorage.removeItem('temp_token')
+        localStorage.removeItem('render_type')
+        localStorage.removeItem('nombre')
         logged.value = false 
     }
 

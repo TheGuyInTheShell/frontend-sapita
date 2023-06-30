@@ -26,8 +26,9 @@ const handleSubmit = async () => {
             [curr.name.toLowerCase()]: inputVal?.value || (inputVal?.getAttribute('data') ?? '' )
         }
     }, {})
-    await apiBase[verb.value](route.value, JSON.stringify(inputsForm))
+    console.log(await apiBase[verb.value](route.value, inputsForm))
     emits('close')
+    options.value.refetch()
 }
 
 const handleDelete = async () => {
@@ -41,6 +42,7 @@ const handleDelete = async () => {
     }, {})
     console.log((await apiBase.delete(route.value + '/' + inputsForm?.id)).data)
     emits('close')
+    options.value.refetch()
 }
 
 </script>

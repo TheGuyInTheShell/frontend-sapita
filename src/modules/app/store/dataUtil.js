@@ -12,6 +12,14 @@ const dataUtil = () => {
     
     const getShow = computed(()=> showNavs.value)
 
+    const refetchCall = ref(()=>{})
+
+    const getRefetchCall = computed(()=> refetchCall.value)
+
+    function setRefetchCall(refetch) {
+        refetchCall.value = refetch
+    }
+
     function swapShow(){
         showNavs.value = !showNavs.value
     }
@@ -62,6 +70,8 @@ const dataUtil = () => {
         resetQuery,
         getShow,
         swapShow,
+        getRefetchCall,
+        setRefetchCall,
     }
 }
 

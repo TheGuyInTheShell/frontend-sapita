@@ -10,11 +10,12 @@ const storeRecord = useRecordStore()
 
 const tableRows = computed(() => storeRecord.getData)
 
-const {isLoading} = useGetData({
+const {isLoading, refetch} = useGetData({
     store: storeRecord,
     subRoute: 'tareas'
   })
 
+storeRecord.setRefetchCall(refetch)
 
 </script>
 

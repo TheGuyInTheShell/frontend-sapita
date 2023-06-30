@@ -2,6 +2,8 @@
 import AddModal from './AddModal.vue'
 import { useContextStore } from '../store/context';
 import { computed } from 'vue';
+import { useRecordStore } from '../store/record';
+
 const props = defineProps({
     row: {
         type: Object,
@@ -11,6 +13,7 @@ const props = defineProps({
 
 const row = computed(()=> props.row)
 
+const recordStore = useRecordStore()
 const contextStore = useContextStore()
 
 let classEstado
@@ -34,7 +37,7 @@ if (row.value.estado === 'descontinuado') {
 const handleChangeInputs = ()=>{
 
     const forInputs = Object.keys(row.value).reduce((acc, key)=>{
-        if (key === 'trabajador_asignado') {
+      if (key === 'trabajador_asignado') {
               if (row.value[key] instanceof Object) {
                 return [
               ...acc,
@@ -45,7 +48,8 @@ const handleChangeInputs = ()=>{
                   }
                 ]
             }else{
-              if (contextStore.getUserType === 'render_admin') {
+              if (row.value?.estado === 'pendiente') {
+                if (contextStore.getUserType === 'render_admin') {
                 return [
                 ...acc,
                 {
@@ -55,6 +59,7 @@ const handleChangeInputs = ()=>{
                   options: contextStore.getTrabajadores.map(trabajador => `${trabajador.nombre}-${trabajador.id}` )
                 },
               ]
+              }
               }
             }
         }
@@ -77,6 +82,7 @@ const handleChangeInputs = ()=>{
         inputs: forInputs,
         route: 'tareas',
         verb: 'put',
+        refetch: recordStore.getRefetchCall,
         deletable: (row.value.estado === 'pendiente' && contextStore.getUserType === 'render_admin'),
         saveable: (row.value.estado === 'pendiente'),
     })

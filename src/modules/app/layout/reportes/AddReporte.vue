@@ -91,6 +91,7 @@ const handleSendForm = (ev)=>{
           message: 'Reporte Añadido',
           type: 'success'
         })
+        reportesStore.getRefetchCall()
         router.push({name: 'reportes-display'})
       } 
   }).catch(console.log)

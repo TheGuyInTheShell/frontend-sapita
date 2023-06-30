@@ -90,6 +90,7 @@ const handleInputsAddInventario = async ()=>{
              ],
                verb: "post",
                route: "inventario",
+               refetch:  inventarioStore.getRefetchCall,
                deletable: false,
                saveable: true
              })

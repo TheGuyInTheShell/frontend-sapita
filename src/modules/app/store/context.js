@@ -13,7 +13,8 @@ export const useContextStore = defineStore('context', ()=>{
 
      const fetchOptions = reactive({
          deletable: false,
-         saveable: false
+         saveable: false,
+         refetch: ()=>{}
      })
 
      const trabajadores = ref([])
@@ -49,12 +50,13 @@ export const useContextStore = defineStore('context', ()=>{
          renderType.value = localStorage.getItem('render_type') || ''
      }
 
-      const setFormConf = ({inputs, verb, route, deletable, saveable})=>{
+      const setFormConf = ({inputs, verb, route, refetch = ()=>{}, deletable, saveable})=>{
             inputsForm.value = inputs
             fetchVerb.value = verb
             fetchRoute.value = route
             fetchOptions.deletable = deletable
             fetchOptions.saveable = saveable
+            fetchOptions.refetch = refetch
       }
 
 

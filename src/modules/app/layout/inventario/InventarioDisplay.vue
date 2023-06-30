@@ -3,16 +3,18 @@ import  { computed, defineAsyncComponent } from 'vue'
 import { useInventarioStore } from '../../store/inventario';
 import useGetData from '../../data/useGetData';
 
-const storeInventario = useInventarioStore()
+const inventarioStore = useInventarioStore()
 
 const ItemInventario = defineAsyncComponent(()=> import('../../components/ItemInventario.vue'))
 
-const itemsInventario = computed(()=> storeInventario.getData)
+const itemsInventario = computed(()=> inventarioStore.getData)
 
-const {isLoading} = useGetData({
-    store: storeInventario,
+const {isLoading, refetch} = useGetData({
+    store: inventarioStore,
     subRoute: 'inventario'
   })
+
+inventarioStore.setRefetchCall(refetch)
 
 </script>
 

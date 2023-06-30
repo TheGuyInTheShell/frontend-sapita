@@ -8,10 +8,12 @@ const reportesStore = useReportesStore()
 
 const itemsReportes = computed(()=> reportesStore.getData)
 
-const {isLoading} = useGetData({
+const {isLoading, refetch} = useGetData({
     store: reportesStore,
     subRoute: 'reportes'
   })
+
+reportesStore.setRefetchCall(refetch)
 
 </script>
 
